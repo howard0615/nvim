@@ -1,9 +1,17 @@
+-- function ColorMyPencils(color)
+-- 	color = color or "rose-pine-moon"
+-- 	vim.cmd.colorscheme(color)
+
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
+
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "onedark"
 	vim.cmd.colorscheme(color)
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return {
@@ -12,12 +20,20 @@ return {
         "erikbackman/brightburn.vim",
     },
 
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     opts = {},
+    --     config = function()
+    --         ColorMyPencils()
+    --     end
+    -- },
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        opts = {},
-        config = function()
-            ColorMyPencils()
+        "olimorris/onedarkpro.nvim",
+        config = function ()
+            require("onedarkpro").setup({
+                ColorMyPencils()
+            })
         end
     },
     {
