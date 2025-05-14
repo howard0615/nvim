@@ -29,7 +29,7 @@ return {
                         return true
                     end
 
-                    local max_filesize = 100 * 1024 -- 100 KB
+                    local max_filesize = 1000 * 1024 -- 100 KB
                     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
                     if ok and stats and stats.size > max_filesize then
                         vim.notify(
@@ -47,7 +47,18 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = { "markdown" },
             },
+
+            rainbow = {
+                enable = true,
+                extend_mode = true,
+                max_file_lines = nil,
+            },
+
+            playground = {
+                enable = true
+            }
         })
+
 
         local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
         treesitter_parser_config.templ = {
