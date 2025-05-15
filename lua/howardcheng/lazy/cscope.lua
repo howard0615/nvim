@@ -67,7 +67,7 @@ return {
             stack_view = {
                 tree_hl = true, -- toggle tree highlighting
             }
-
+            
             -- Keymaps	Description
             -- <prefix>s	find all references to the token under cursor
             -- <prefix>g	find global definition(s) of the token under cursor
@@ -87,16 +87,28 @@ return {
             
 
         })
+        local wk = require("which-key")
+        wk.add({
+            "<leader>v", group = "CsStackView"
+        })
+        vim.keymap.set("n", "<leader>vu", function()
+            local word = vim.fn.expand("<cword>")
+            vim.cmd("CsStackView open up " .. word)
+        end, { noremap = true, silent = true , desc="CsStackView open up <cursor_word>"})
+        vim.keymap.set("n", "<leader>vo", function()
+            local word = vim.fn.expand("<cword>")
+            vim.cmd("CsStackView open down " .. word)
+        end, { noremap = true, silent = true , desc="CsStackView open up <cursor_word>"})
+        vim.keymap.set("n", "<leader>vt", "<cmd>CsStackView toggle<CR>", {desc = "CsStackView toggle"})
     end
-    }
-    ,
+    },
     {
     "ludovicchabant/vim-gutentags",
     init = function()
         vim.g.gutentags_modules = {"cscope_maps"} -- This is required. Other config is optional
         vim.g.gutentags_cscope_build_inverted_index_maps = 1
         vim.g.gutentags_cache_dir = vim.fn.expand("~/code/.gutentags")
-        vim.g.gutentags_file_list_command = "fd -e c -e h"
+        -- vim.g.gutentags_file_list_command = "fd -e c -e h"
         -- vim.g.gutentags_trace = 1
     end,
     }
