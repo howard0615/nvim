@@ -1,6 +1,6 @@
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fv", vim.cmd.Ex, {desc="To cmd Ex"})
 
 -- move items that are selected
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -71,9 +71,21 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>O.logger.Error(\"error\", \"error\", err)<Esc>F.;i"
 )
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+-- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+
+-- Making
+vim.keymap.set("n", "<leader>crd", "<cmd>:!Get-ChildItem -Recurse -Include *.c,*.h -File | ForEach-Object { $_.FullName.Substring($PWD.Path.Length + 1) } > cscope.files<CR>")
+vim.keymap.set("n", "<leader>ccb", "<cmd>:!cscope -bqk<CR>")
+
+
+-- vim.keymap.set("n", "<leader>cj", function ()
+--     local cword =  
+--    "<cmd>CsStackView open down <cWORD><CR>") 
+-- end
+-- vim.keymap.set("n", "<leader>ck", "<cmd>CsStackView open up <cWORD><CR>")
