@@ -45,7 +45,7 @@ return {
                     window_pos = "bottom", -- "bottom", "right", "left" or "top"
                 },
                 -- "true" does not open picker for single result, just JUMP
-                skip_picker_for_single_result = false, -- "false" or "true"
+                skip_picker_for_single_result = true, -- "false" or "true"
                 -- custom script can be used for db build
                 db_build_cmd = { script = "default", args = { "-bqkv" } },
                 -- statusline indicator, default is cscope executable
@@ -100,6 +100,7 @@ return {
             vim.cmd("CsStackView open down " .. word)
         end, { noremap = true, silent = true , desc="CsStackView open up <cursor_word>"})
         vim.keymap.set("n", "<leader>vt", "<cmd>CsStackView toggle<CR>", {desc = "CsStackView toggle"})
+
     end
     },
     {

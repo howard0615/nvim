@@ -36,7 +36,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", "\"_d")
 -- never use Q
 vim.keymap.set("n", "Q", "<nop>") 
 -- Can navigate to other project , but which tmux is avaible
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -82,10 +82,6 @@ end)
 -- Making
 vim.keymap.set("n", "<leader>crd", "<cmd>:!Get-ChildItem -Recurse -Include *.c,*.h -File | ForEach-Object { $_.FullName.Substring($PWD.Path.Length + 1) } > cscope.files<CR>")
 vim.keymap.set("n", "<leader>ccb", "<cmd>:!cscope -bqk<CR>")
+vim.keymap.set({ "n", "v" }, "<C-c><C-g>", "<cmd>Cs f g<cr>")
 
-
--- vim.keymap.set("n", "<leader>cj", function ()
---     local cword =  
---    "<cmd>CsStackView open down <cWORD><CR>") 
--- end
--- vim.keymap.set("n", "<leader>ck", "<cmd>CsStackView open up <cWORD><CR>")
+vim.keymap.set("n", "<leader>w", "<C-w>", {desc="Window operation"})
